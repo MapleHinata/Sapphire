@@ -78,15 +78,14 @@ enum ServerZoneIpcType :
   SocialRequestError = 0xF0AD,
 
   CFRegistered = 0x029F,          // updated 5.58h
-  SocialRequestResponse = 0x323,  // updated 6.40
-  SocialMessage = 0x03CB,         // updated 5.58h
-  SocialMessage2 = 0x01D7,        // updated 5.58h
+  SocialInviteResponse = 0x323,  // updated 6.40
+  SocialInviteUpdate = 0x03CB,         // updated 5.58h
+  SocialInviteResult = 0x01D7,        // updated 5.58h
   CancelAllianceForming = 0xF0C6, // updated 4.2
 
   LogMessage = 0x113, // updated 6.40
 
   Chat = 0x335, // updated 6.40
-  PartyChat = 0x0065,
 
   WorldVisitList = 0xF0FE, // added 4.5
 
@@ -161,7 +160,7 @@ enum ServerZoneIpcType :
   SomeCustomiseChangePacketProbably = 0x00CD, // added 5.18
 
   PartyList = 0x110,          // updated 6.40
-  PartyMessage = 0x374,        // updated 6.40
+  PartyUpdate = 0x374,        // updated 6.40
   HateRank = 0x22d,            // updated 6.40
   HateList = 0x22e,            // updated 6.40
   ObjectSpawn = 0x184,        // updated 6.40
@@ -350,15 +349,15 @@ enum ClientZoneIpcType :
   CancelLogout = 0x01e3,       // updated 6.31h
   CFDutyInfoHandler = 0xF078,  // updated 4.2
 
-  SocialReqSendHandler = 0x00D7,  // updated 5.58h
-  SocialResponseHandler = 0x023B, // updated 5.58h
+  SocialInviteHandler = 0x00D7,  // updated 5.58h
+  SocialReplyHandler = 0x023B, // updated 5.58h
   CreateCrossWorldLS = 0x9999,    // updated 5.58h
 
-  ChatHandler = 0xd3, // updated 6.40
-  PartyChatHandler = 0x0065, PartySetLeaderHandler = 0x036C,  // updated 5.58h
-  LeavePartyHandler = 0x019D,      // updated 5.58h
-  KickPartyMemberHandler = 0x0262, // updated 5.58h
-  DisbandPartyHandler = 0x0276,    // updated 5.58h
+  ChatHandler = 0x00D3, // updated 6.40
+  PartyChangeLeaderHandler = 0x036C,  // updated 5.58h
+  PartyLeaveHandler = 0x019D,      // updated 5.58h
+  PartyKickHandler = 0x0262, // updated 5.58h
+  PartyDisbandHandler = 0x0276,    // updated 5.58h
 
   SocialListHandler = 0x206,              // updated 6.40
   SetSearchInfoHandler = 0x3b6,           // updated 6.40
@@ -449,6 +448,7 @@ enum ServerChatIpcType :
   uint16_t
 {
   Tell = 0x0064,              // updated for sb
+  ChannelChat = 0x0065,
   PublicContentTell = 0xF0FB, // added 4.5, this is used when receiving a /tell in PublicContent instances such as Eureka or Bozja (prepended F conflicts with TradeReturnEventHandler 6.38)
   TellErrNotFound = 0x0066,
 
@@ -462,6 +462,7 @@ enum ClientChatIpcType :
   uint16_t
 {
   TellReq = 0x0064,
+  ChannelChatReq = 0x0065,
   PublicContentTellReq = 0x0326, // updated 5.35 hotfix, this is used when sending a /tell in PublicContent instances such as Eureka or Bozja
 };
 
